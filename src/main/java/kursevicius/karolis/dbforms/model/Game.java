@@ -19,32 +19,32 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prekes_nr_seq")
     @SequenceGenerator(name = "prekes_nr_seq")
     @Column(name = "prekes_nr")
-    BigDecimal id;
+    Long id;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "teikejo numeris", referencedColumnName = "tiekejo_numeris", columnDefinition = "int")
-    Tiekejas supplier;
+    @JoinColumn(name = "tiekejo_numeris", referencedColumnName = "tiekejo_numeris")
+    Supplier supplier;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "priskiriamos",
             joinColumns = @JoinColumn(name = "prekes_nr"),
             inverseJoinColumns = @JoinColumn(name = "kategorijos_id")
     )
-    List<PrekiuKategorija> categories;
+    List<GameCategory> categories;
 
-    @Column(name = "kaina", columnDefinition = "Kaina", nullable = false)
+    @Column(name = "kaina", nullable = false)
     BigDecimal price;
 
     @Column(name = "kiekis", nullable = false)
     int quantity;
 
-    @Column(name = "kategorija", columnDefinition = "char", nullable = false)
+    @Column(name = "kategorija", nullable = false)
     String categoryDescription;
 
-    @Column(name = "metai", columnDefinition = "smallint", nullable = false)
+    @Column(name = "metai", nullable = false)
     int year;
 
-    @Column(name = "amziaus_cenzas", columnDefinition = "tinyint", nullable = false)
+    @Column(name = "amziaus_cenzas", nullable = false)
     int censerAge;
 
     @Column(name = "aprasymas", nullable = false)

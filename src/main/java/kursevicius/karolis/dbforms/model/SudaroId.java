@@ -14,7 +14,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-//@Embeddable
+@Embeddable
 public class SudaroId implements Serializable {
     @Column(name = "prekes_nr")
     BigDecimal productId;

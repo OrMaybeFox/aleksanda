@@ -18,9 +18,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Value
-@Service
-public class CarServiceImpl implements CarService {
-    CarRepository carRepository;
+//@Service
+public class CarServiceImpl /*implements CarService */{
+  /*  CarRepository carRepository;
     RentPlaceRepository rentPlaceRepository;
     CarModelRepository carModelRepository;
 
@@ -110,5 +110,5 @@ public class CarServiceImpl implements CarService {
         if (!StringUtils.isEmpty(plateNumber))
             return plateNumber.equalsIgnoreCase(car.getPlateNumber());
         return true;
-    }
+    }*/
 }

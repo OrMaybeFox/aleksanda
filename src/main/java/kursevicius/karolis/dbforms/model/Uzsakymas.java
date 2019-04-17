@@ -12,8 +12,8 @@ import java.util.Date;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name = "uzsakymas")
+//@Entity
+//@Table(name = "uzsakymas")
 public class Uzsakymas {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "uzsakymo_nr_seq")

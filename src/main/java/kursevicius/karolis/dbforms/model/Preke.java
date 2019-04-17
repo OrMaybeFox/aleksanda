@@ -12,8 +12,8 @@ import java.util.List;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name = "preke_zaidimas")
+//@Entity
+//@Table(name = "preke_zaidimas")
 public class Preke {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prekes_nr_seq")

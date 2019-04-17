@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 import static java.util.Optional.of;
 
 @Value
-@Controller
+//@Controller
 public class CarController {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 

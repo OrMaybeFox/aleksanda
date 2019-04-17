@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Component
+//@Component
 public class ReportDataAssembler {
     private static final String DATE_FORMAT = "yyyy-MM-dd";
 

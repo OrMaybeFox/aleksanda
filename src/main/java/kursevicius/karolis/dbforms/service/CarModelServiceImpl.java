@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Value
-@Service
-public class CarModelServiceImpl implements CarModelService {
-    CarModelRepository carModelRepository;
+//@Service
+public class CarModelServiceImpl /*implements CarModelService */{
+   /* CarModelRepository carModelRepository;
 
     @Override
     public List<CarModel> findAll() {
         return carModelRepository.findAll();
-    }
+    }*/
 }

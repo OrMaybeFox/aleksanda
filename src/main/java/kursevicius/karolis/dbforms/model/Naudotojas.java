@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name = "naudotojas")
+//@Entity
+//@Table(name = "naudotojas")
 public class Naudotojas {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "kliento_nr_seq")

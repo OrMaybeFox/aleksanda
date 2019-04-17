@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 @Value
-@Service
-public class ReportServiceImpl implements ReportService {
-    CarService carService;
+//@Service
+public class ReportServiceImpl /*implements ReportService*/ {
+    /*CarService carService;
     ReportDataAssembler reportDataAssembler;
     FileGenerator reportGenerator;
 
@@ -31,5 +31,5 @@ public class ReportServiceImpl implements ReportService {
         result.setRegistrationDateFrom(request.getRegistrationDateFrom());
         request.setRegistrationDateTo(request.getRegistrationDateTo());
         return result;
-    }
+    }*/
 }

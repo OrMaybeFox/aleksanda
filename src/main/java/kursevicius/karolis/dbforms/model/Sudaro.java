@@ -13,8 +13,8 @@ import java.util.Objects;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name = "sudaro")
+//@Entity
+//@Table(name = "sudaro")
 public class Sudaro implements Serializable {
 //    @EmbeddedId
 //    SudaroId id;

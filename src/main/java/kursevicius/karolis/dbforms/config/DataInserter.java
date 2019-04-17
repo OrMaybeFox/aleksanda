@@ -44,8 +44,8 @@ public class DataInserter implements CommandLineRunner {
         vytautinis.getCars().addAll(getCars(audi));
         petrinis.getCars().addAll(getCars(vw));
 
-        rentPlaceRepository.save(vytautinis);
-        rentPlaceRepository.save(petrinis);
+//        rentPlaceRepository.save(vytautinis);
+//        rentPlaceRepository.save(petrinis);
     }
 
     private List<Car> getCars(Brand brand) {
