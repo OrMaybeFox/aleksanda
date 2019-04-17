@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Automobiliai</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container" style="margin-top: 8px">
+    <div class="row">
+        <div class="col-md-12">
+            <form th:object="${searchRequest}" th:action="@{/search-cars}" method="post">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">Paieškos forma</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label for="registrationDateFrom">Registracijos data nuo</label>
+                                <input id="registrationDateFrom" class="form-control"
+                                       th:field="*{registrationDateFrom}"
+                                       pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))"
+                                       title="Formatas turi būti YYYY-MM-DD"/>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="registrationDateTo">Registracijos data iki</label>
+                                <input id="registrationDateTo" class="form-control" th:field="*{registrationDateTo}"
+                                       pattern="([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))"
+                                       title="Formatas turi būti YYYY-MM-DD"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label for="rentPlaceId">Nuomos punktas</label>
+                                <select id="rentPlaceId" class="form-control" th:field="*{rentPlaceId}">
+                                    <option th:each="rentPlace : ${rentPlaces}" th:value="${rentPlace.getId()}"
+                                            th:text="${rentPlace.getName()}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="plateNumber">Valstybiniai nr.</label>
+                                <input id="plateNumber" class="form-control" th:field="*{plateNumber}"
+                                       pattern="^[A-Z]{3}[0-9]{3}$" title="Formatas turi būti XXX000"/>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ieškoti</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Automobiliai</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover ">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>ID</th>
+                                <th>Valstybiniai nr.</th>
+                                <th>Registracijos data</th>
+                                <th>Modelio pav.</th>
+                                <th>Markės pav.</th>
+                                <th>Nuomos punkto pav.</th>
+                                <th>Nuomos punkto adresas</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="car : ${cars}" th:if="${not #lists.isEmpty(cars)}">
+                                <td th:text="${car.carId}"></td>
+                                <td th:text="${car.plateNumber}"></td>
+                                <td th:text="${car.registrationDate}"></td>
+                                <td th:text="${car.modelName}"></td>
+                                <td th:text="${car.brandName}"></td>
+                                <td th:text="${car.rentPlaceName}"></td>
+                                <td th:text="${car.rentPlaceAddress}"></td>
+                                <td><a href="" th:href="@{'/cars/' + ${car.carId}}">Peržiūrėti</a></td>
+                                <td><a href="" th:href="@{'/cars/' + ${car.carId} + '/delete'}">Ištrinti</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a th:href="@{/cars/new}" class="btn btn-primary">Sukurti</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

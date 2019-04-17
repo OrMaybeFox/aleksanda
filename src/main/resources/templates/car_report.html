@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        thead, tbody {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h2 th:text="'Ataskaita ' + ${data.id}"></h2>
+</div>
+<div>
+    <p th:text="'Sugeneravimo data ' + ${data.date}"></p>
+</div>
+<h3>Automobiliu markes</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Pavadinimas</th>
+        <th>Modeliu sk.</th>
+        <th>Automobiliu sk.</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="brand : ${data.carBrands}" th:if="${not #lists.isEmpty(data.carBrands)}">
+        <td th:text="${brand.name}"></td>
+        <td th:text="${brand.modelCount}"></td>
+        <td th:text="${brand.carCount}"></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td th:text="'Is viso modeliu: ' + ${data.totalCarModelCount}"></td>
+        <td th:text="'Is viso automobiliu: ' + ${data.totalCarCount}"></td>
+    </tr>
+    </tbody>
+</table>
+<p th:text="'Is viso automobiliu markiu: ' + ${data.totalCarBrandCount}"></p>
+<h3>Automobiliu modeliai</h3>
+<table>
+    <thead>
+    <tr>
+        <th>Markes pavadinimas</th>
+        <th>Pavadinimas</th>
+        <th>Automobiliu sk.</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="model : ${data.carModels}" th:if="${not #lists.isEmpty(data.carModels)}">
+        <td th:text="${model.brandName}"></td>
+        <td th:text="${model.name}"></td>
+        <td th:text="${model.carCount}"></td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+        <td colspan="1" th:text="'Is viso automobiliu: ' + ${data.totalCarCount}"></td>
+    </tr>
+    </tbody>
+</table>
+<p th:text="'Is viso automobiliu modeliu: ' + ${data.totalCarModelCount}"></p>
+</body>
+</html>

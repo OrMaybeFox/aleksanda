@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<nav class="navbar navbar-default" th:fragment="header">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="" th:href="@{/cars}">DBFORMS</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li th:classappend="${#httpServletRequest.requestURI == '' || #httpServletRequest.requestURI == '/' || #httpServletRequest.requestURI == '/cars' || #httpServletRequest.requestURI == '/search-cars'} ? active">
+                <a href="" th:href="@{/cars}">Automobiliai</a>
+            </li>
+            <li th:classappend="${#httpServletRequest.requestURI == '/report'} ? active">
+                <a href="" th:href="@{/report}">Ataskaita</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</html>

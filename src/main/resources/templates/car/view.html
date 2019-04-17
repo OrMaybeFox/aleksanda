@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Automobilis</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container" style="margin-top: 8px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title" th:text="${car.plateNumber}"></h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 form-car">
+                            <label for="plateNumber">Valstybinis numeris:</label>
+                            <span id="plateNumber" th:text="${car.plateNumber}"></span>
+                        </div>
+                        <div class="col-md-6 form-car">
+                            <label for="registrationDate">Registracijos data:</label>
+                            <span id="registrationDate"
+                                  th:text="${car.registrationDate}"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-car">
+                            <label for="rentPlaceAddress">Nuomos punkto adresas:</label>
+                            <span id="rentPlaceAddress" th:text="${car.rentPlaceAddress}"></span>
+                        </div>
+                        <div class="col-md-6 form-car">
+                            <label for="brandName">Markės pavadinimas:</label>
+                            <span id="brandName" th:text="${car.brandName}"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-car">
+                            <label for="rentPlaceName">Nuomos punkto pav.:</label>
+                            <span id="rentPlaceName" th:text="${car.rentPlaceName}"></span>
+                        </div>
+                        <div class="col-md-6 form-car">
+                            <label for="modelName">Modelio pavadinimas:</label>
+                            <span id="modelName" th:text="${car.modelName}"></span>
+                        </div>
+                    </div>
+                    <a th:href="@{/cars}" class="btn btn-primary">Grįžti</a>
+                    <a th:href="@{'/cars/' + ${car.carId} + '/update'}" class="btn btn-primary">Atnaujinti</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
